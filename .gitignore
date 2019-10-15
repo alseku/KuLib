@@ -1,0 +1,5 @@
+bin/*
+!bin/roslyn/
+obj
+packages
+.vs

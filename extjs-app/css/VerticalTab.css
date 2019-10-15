@@ -1,0 +1,14 @@
+﻿.verticaltab > .x-tab-bar > .x-tab-bar-body > .x-box-inner > .x-box-target > .x-tab > .x-tab-wrap {
+    position: absolute;
+    display: block;
+    padding-left: 20px;
+    transform: rotate(90deg);
+}
+
+.verticaltab > .x-tab-bar > .x-tab-bar-body > .x-box-inner > .x-box-target > .x-tab > .x-tab-wrap > .x-tab-button {
+    position: absolute;
+    display: block;
+    padding-left: 0px;
+    padding-top: 2px;
+}
+
