@@ -106,6 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="extjs-app\css\VerticalTab.css" />
+    <Content Include="extjs-app\publication\BasePublicationController.js" />
+    <Content Include="extjs-app\publication\BasePublicationWindow.js" />
+    <Content Include="extjs-app\publication\book\BookController.js" />
+    <Content Include="extjs-app\publication\book\BookWindow.js" />
     <Content Include="extjs\resources\css\ext-all-access-debug.css" />
     <Content Include="extjs\resources\css\ext-all-access-rtl-debug.css" />
     <Content Include="extjs\resources\css\ext-all-access-rtl.css" />
@@ -3063,14 +3067,16 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Publication\BookController.cs" />
     <Compile Include="Controllers\Publication\PublicationController.cs" />
-    <Compile Include="Dto\BookListDto.cs" />
-    <Compile Include="Dto\PublicationListDto.cs" />
+    <Compile Include="Dto\Publications\Books\BookEditDto.cs" />
+    <Compile Include="Dto\Publications\Books\BookListDto.cs" />
+    <Compile Include="Dto\Publications\PublicationListDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Content Include="extjs-app\publication\book\BookModel.js" />
     <Content Include="extjs-app\publication\publication\PublicationGrid.js" />
-    <Compile Include="Models\Entities\Creators\Creator.cs" />
+    <Compile Include="Models\Entities\Persons\Author.cs" />
+    <Compile Include="Models\Entities\Persons\Person.cs" />
     <Compile Include="Models\Entities\Publications\Book.cs" />
     <Compile Include="Models\Entities\Publications\Collection.cs" />
     <Compile Include="Models\Entities\Publications\JournalIssue.cs" />

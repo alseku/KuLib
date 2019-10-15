@@ -8,7 +8,8 @@ namespace KuLib.Models.Entities.Publications
 {
     public class Publication
     {
-        public int PublicationId { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         [MaxLength(200)]
         public string InfoStr { get; set; }

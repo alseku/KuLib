@@ -1,4 +1,4 @@
-﻿using KuLib.Dto;
+﻿using KuLib.Dto.Publications.Books;
 using KuLib;
 using System;
 using System.Collections.Generic;
@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KuLib.Models.Entities;
+using KuLib.Models.Entities.Publications;
 
 namespace KuLib.Controllers.Publications
 {
@@ -15,21 +16,49 @@ namespace KuLib.Controllers.Publications
         {
             using (var dbc = new KuLibDbContext())
             {
-                //dbc.SaveChanges();
-                dbc.Database.Initialize(false);
-            }
-
-
-            return Json(new
-            {
-                success = true,
-                data = new BookListDto[]
+                var data = dbc.Books.Select(x => new BookListDto
                 {
-                    new BookListDto { Id = 1, Name = "Имя книги 1", Title = "Наименование книги 1" },
-                    new BookListDto { Id = 2, Name = "Имя книги 2", Title = "Наименование книги 2" }
+                    Id = x.Id,
+                    InfoStr = x.InfoStr,
+                    Title = x.BookTitle
+                }).ToArray();
+
+                return Json(new
+                {
+                    success = true,
+                    data = data
+                }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public JsonResult Create(BookEditDto model)
+        {
+            try
+            {
+                using (var dbc = new KuLibDbContext())
+                {
+                    var newBook = new Book();
+                    newBook.InfoStr = model.InfoStr;
+
+                    dbc.Books.Add(newBook);
+                    dbc.SaveChanges();
+
+                    return Json(new
+                    {
+                        success = true,
+                        message = "Создание прошло успешно",
+                        id = newBook.Id
+                    });
                 }
-            },
-            JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = ex.Message
+                });
+            }
         }
     }
 }

@@ -7,10 +7,25 @@
 
     storeClassName: 'KuLib.publication.book.BookStore',
 
+    alias: 'widget.bookgrid',
+
     getAdditionalColumns: function () {
         return [{
             header: 'Название',
             dataIndex: 'Title'
         }];
-    }
+    },
+
+    dockedItems: [
+        {
+            xtype: 'toolbar',
+            docked: 'top',
+            items: [
+                {
+                    text: 'Добавить',
+                    action: 'new'
+                }
+            ]
+        }
+    ]
 });

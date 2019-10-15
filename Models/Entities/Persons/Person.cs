@@ -6,12 +6,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using KuLib.Models.Entities.Publications;
 
-namespace KuLib.Models.Entities.Creators
+namespace KuLib.Models.Entities.Persons
 {
-    //[Table("Creators")]
-    public class Creator
+    public class Person
     {
-        public int CreatorId { get; set; }
+        [Key]
+        public int Id { get; set; }
         /// <summary>
         /// Имя
         /// </summary>
@@ -47,8 +47,5 @@ namespace KuLib.Models.Entities.Creators
         /// Дата рождения
         /// </summary>
         public DateTime  BirthDate { get; set; }
-
-        public List<Publication> Publications { get; set; }
-
     }
 }

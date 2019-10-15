@@ -1,4 +1,4 @@
-﻿using KuLib.Dto;
+﻿using KuLib.Dto.Publications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +16,8 @@ namespace KuLib.Controllers.Publications
                 success = true,
                 data = new PublicationListDto[] 
                 {
-                    new PublicationListDto { Id = 1, Name = "Первая" },
-                    new PublicationListDto { Id = 2, Name = "Вторая" }
+                    new PublicationListDto { Id = 1, InfoStr = "Первая" },
+                    new PublicationListDto { Id = 2, InfoStr = "Вторая" }
                 },
             }, JsonRequestBehavior.AllowGet);
         }

@@ -5,7 +5,7 @@
         name: 'Id',
         type: 'int'
     }, {
-        name: 'Name',
+        name: 'InfoStr',
         type: 'string'
     }, {
         name: 'Title',

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using KuLib.Models.Entities.Creators;
 
 namespace KuLib.Models.Entities.Publications
 {
@@ -17,7 +16,5 @@ namespace KuLib.Models.Entities.Publications
         public int Volume { get; set; }
 
         public int No { get; set; }
-
-        public List<Creator> Editors { get; set; }
     }
 }

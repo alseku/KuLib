@@ -18,7 +18,7 @@
     getColumns: function () {
         var columns = [{
             header: 'Имя',
-            dataIndex: 'Name'
+            dataIndex: 'InfoStr'
         }];
 
         columns.push(...this.getAdditionalColumns());

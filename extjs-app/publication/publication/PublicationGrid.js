@@ -5,5 +5,7 @@
 
     extend: 'KuLib.publication.BasePublicationGrid',
 
-    storeClassName: 'KuLib.publication.publication.PublicationStore'
+    storeClassName: 'KuLib.publication.publication.PublicationStore',
+
+    alias: 'widget.publicationgrid'
 })

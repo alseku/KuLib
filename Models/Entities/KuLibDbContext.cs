@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using KuLib.Models.Entities.Publications;
 using KuLib.Models.Entities;
-using KuLib.Models.Entities.Creators;
+using KuLib.Models.Entities.Persons;
 //using System.Diagnostics;
 
 namespace KuLib.Models.Entities
@@ -20,22 +20,19 @@ namespace KuLib.Models.Entities
             // Указываем EF, что если модель изменилась,
             // то нужно пересоздать базу данных с новой структурой
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<KuLibDbContext>());
+
+            this.Database.Initialize(true);
         }
 
         public DbSet<Publication> Publications { get; set; }
-        //public DbSet<Book> Books { get; set; }
+        public DbSet<Book> Books { get; set; }
         //public DbSet<SerialBook> SerialBooks { get; set; }
         //public DbSet<Collection> Collections { get; set; }
-        //public DbSet<JournalIssue> JournalIssues { get; set; }
+        public DbSet<JournalIssue> JournalIssues { get; set; }
 
 
-        public DbSet<Creator> Creators { get; set; }
-       // public DbSet<Author> Authors { get; set; }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Author> Authors { get; set; }
         //public DbSet<Editor> Editors { get; set; }
-
-
-
     }
-
-
 }

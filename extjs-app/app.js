@@ -5,6 +5,11 @@ Ext.application({
         'KuLib.publication.publication.PublicationGrid',
         'KuLib.publication.book.BookGrid'
     ],
+
+    controllers: [
+        'KuLib.publication.book.BookController'
+    ],
+
     launch: function () {
         Ext.create('Ext.container.Viewport', {
             layout: 'fit',
@@ -26,8 +31,8 @@ Ext.application({
                             xtype: 'tabpanel',
                             title: 'Библиотека',
                             items: [
-                                Ext.create('KuLib.publication.publication.PublicationGrid'),
-                                Ext.create('KuLib.publication.book.BookGrid')
+                                { xtype: 'publicationgrid' },
+                                { xtype: 'bookgrid' }
                             ]
                         },
                         {
