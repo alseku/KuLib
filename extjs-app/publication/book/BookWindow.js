@@ -7,6 +7,20 @@
     autoShow: true,
 
     getAdditionalItems: function () {
-        return [];
+        var items = this.callParent(arguments);
+        items.push({
+            xtype: 'textfield',
+            name: 'BookTitle',
+            fieldLabel: 'Наименование',
+            allowBlank: false
+        });
+        items.push({
+            xtype: 'textfield',
+            name: 'Author',
+            fieldLabel: 'Автор(ы)',
+            allowBlank: false
+        });
+
+        return items;
     }
 });

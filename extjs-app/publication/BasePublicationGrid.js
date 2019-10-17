@@ -3,30 +3,16 @@
         'KuLib.publication.BasePublicationStore'
     ],
 
-    extend: 'Ext.grid.Panel',
+    extend: 'KuLib.base.BaseGrid',
     title: 'Все книги',
 
     storeClassName: null,
 
-    initComponent: function () {
-        this.store = Ext.create(this.storeClassName);
-        this.columns = this.getColumns();
-        this.callParent(arguments);
-        this.store.load();
-    },
-
-    getColumns: function () {
-        var columns = [{
-            header: 'Имя',
-            dataIndex: 'InfoStr'
-        }];
-
-        columns.push(...this.getAdditionalColumns());
-
-        return columns;
-    },
-
     getAdditionalColumns: function () {
-        return [];
+        return [{
+            header: 'Информационная строка',
+            dataIndex: 'InfoStr',
+            width: 200
+        }];
     }
 })

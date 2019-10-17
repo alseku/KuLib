@@ -8,7 +8,10 @@
         name: 'InfoStr',
         type: 'string'
     }, {
-        name: 'Title',
+        name: 'BookTitle',
+        type: 'string'
+    }, {
+        name: 'Author',
         type: 'string'
     }]
 });

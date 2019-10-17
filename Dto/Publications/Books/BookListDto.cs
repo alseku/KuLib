@@ -7,6 +7,14 @@ namespace KuLib.Dto.Publications.Books
 {
     public class BookListDto : PublicationListDto
     {
-        public string Title { get; set; }
+        /// <summary>
+        /// Титул
+        /// </summary>
+        public string BookTitle { get; set; }
+
+        /// <summary>
+        /// Автор
+        /// </summary>
+        public string Author { get; set; }
     }
 }

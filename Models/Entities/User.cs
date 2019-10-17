@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using KuLib.Models.Entities.Publications;
 
-namespace KuLib.Models.Entities.Persons
+namespace KuLib.Models.Entities
 {
-    public class Person
+    public class User
     {
         [Key]
         public int Id { get; set; }
+
         /// <summary>
         /// Имя
         /// </summary>
@@ -46,6 +45,6 @@ namespace KuLib.Models.Entities.Persons
         /// <summary>
         /// Дата рождения
         /// </summary>
-        public DateTime  BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
     }
 }

@@ -12,7 +12,12 @@
     getAdditionalColumns: function () {
         return [{
             header: 'Название',
-            dataIndex: 'Title'
+            dataIndex: 'BookTitle',
+            width: 100
+        }, {
+            header: 'Автор(ы)',
+            dataIndex: 'Author',
+            width: 100
         }];
     },
 
@@ -24,6 +29,14 @@
                 {
                     text: 'Добавить',
                     action: 'new'
+                },
+                {
+                    text: 'Редактировать',
+                    action: 'edit'
+                },
+                {
+                    text: 'Удалить',
+                    action: 'delete'
                 }
             ]
         }

@@ -8,16 +8,16 @@ namespace KuLib.Dto.Publications.Books
     /// <summary>
     /// Модель для редактирования или создания объекта книги
     /// </summary>
-    public class BookEditDto
+    public class BookEditDto : PublicationEditDto
     {
         /// <summary>
-        /// Идентификатор
+        /// Наименование
         /// </summary>
-        public long Id { get; set; }
+        public string BookTitle { get; set; }
 
         /// <summary>
-        /// Информационная строка
+        /// Автор
         /// </summary>
-        public string InfoStr { get; set; }
+        public string Author { get; set; }
     }
 }

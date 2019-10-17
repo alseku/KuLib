@@ -105,6 +105,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="extjs-app\base\BaseController.js" />
+    <Content Include="extjs-app\base\BaseGrid.js" />
+    <Content Include="extjs-app\base\BaseWindow.js" />
     <Content Include="extjs-app\css\VerticalTab.css" />
     <Content Include="extjs-app\publication\BasePublicationController.js" />
     <Content Include="extjs-app\publication\BasePublicationWindow.js" />
@@ -3069,20 +3072,21 @@
     <Compile Include="Controllers\Publication\PublicationController.cs" />
     <Compile Include="Dto\Publications\Books\BookEditDto.cs" />
     <Compile Include="Dto\Publications\Books\BookListDto.cs" />
+    <Compile Include="Dto\Publications\PublicationEditDto.cs" />
     <Compile Include="Dto\Publications\PublicationListDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Services\Publications\BookService.cs" />
     <Content Include="extjs-app\publication\book\BookModel.js" />
     <Content Include="extjs-app\publication\publication\PublicationGrid.js" />
-    <Compile Include="Models\Entities\Persons\Author.cs" />
-    <Compile Include="Models\Entities\Persons\Person.cs" />
     <Compile Include="Models\Entities\Publications\Book.cs" />
     <Compile Include="Models\Entities\Publications\Collection.cs" />
     <Compile Include="Models\Entities\Publications\JournalIssue.cs" />
     <Compile Include="Models\Entities\Publications\Publication.cs" />
     <Compile Include="Models\Entities\KuLibDbContext.cs" />
     <Compile Include="Models\Entities\Publications\SerialBook.cs" />
+    <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
