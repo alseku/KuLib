@@ -9,10 +9,12 @@
     storeClassName: null,
 
     getAdditionalColumns: function () {
-        return [{
+        var columns = this.callParent(arguments);
+        columns.push({
             header: 'Информационная строка',
             dataIndex: 'InfoStr',
             width: 200
-        }];
+        });
+        return columns;
     }
 })

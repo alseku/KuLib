@@ -15,18 +15,21 @@ namespace KuLib.Models.Entities
         /// Имя
         /// </summary>
         [MaxLength(4000)]
+        [Required]
         public string Name { get; set; }
 
         /// <summary>
         /// Отчество
         /// </summary>
         [MaxLength(4000)]
+        [Required]
         public string Patronymic { get; set; }
 
         /// <summary>
         /// Фамилия
         /// </summary>
         [MaxLength(4000)]
+        [Required]
         public string Surname { get; set; }
 
 
@@ -34,17 +37,20 @@ namespace KuLib.Models.Entities
         /// "Имя Отчество Фамилия"
         /// </summary>
         [MaxLength(4000)]
+        [Required]
         public string FullName { get; set; }
 
         /// <summary>
         /// "И.О. Фамилия"
         /// </summary>
         [MaxLength(4000)]
+        [Required]
         public string ShortName { get; set; }
 
         /// <summary>
         /// Дата рождения
         /// </summary>
+        [Required]
         public DateTime BirthDate { get; set; }
     }
 }

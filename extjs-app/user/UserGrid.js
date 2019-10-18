@@ -1,27 +1,28 @@
-﻿Ext.define('KuLib.publication.book.BookGrid', {
-    extend: 'KuLib.publication.BasePublicationGrid',
+﻿Ext.define('KuLib.user.UserGrid', {
+    requires: [
+        'KuLib.user.UserStore'
+    ],
 
-    title: 'Книги',
+    extend: 'KuLib.base.BaseGrid',
+    title: 'Пользователи',
+    alias: 'widget.usergrid',
 
-    requires: 'KuLib.publication.book.BookStore',
-
-    storeClassName: 'KuLib.publication.book.BookStore',
-
-    alias: 'widget.bookgrid',
+    storeClassName: 'KuLib.user.UserStore',
 
     getAdditionalColumns: function () {
         var columns = this.callParent(arguments);
         columns.push({
-            header: 'Название',
-            dataIndex: 'BookTitle',
-            width: 100
+            header: 'Ф.И.О.',
+            dataIndex: 'FullName',
+            width: 250
         });
         columns.push({
-            header: 'Автор(ы)',
-            dataIndex: 'Author',
+            header: 'Дата рождения',
+            dataIndex: 'BirthDate',
+            xtype: 'datecolumn',
+            format: 'd.m.Y',
             width: 100
         });
-
         return columns;
     },
 

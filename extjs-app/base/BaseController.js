@@ -123,6 +123,7 @@
                 var res = Ext.decode(response.responseText);
                 if (res.success) {
                     var window = Ext.widget(controller.windowXType);
+                    debugger;
                     window.down('form').getForm().setValues(res.data);
                 } else {
                     Ext.Msg.alert('Ошибка!', res.message);

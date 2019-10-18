@@ -3,8 +3,6 @@
     alias: 'widget.bookwindow',
 
     title: 'Книга',
-    layout: 'fit',
-    autoShow: true,
 
     getAdditionalItems: function () {
         var items = this.callParent(arguments);

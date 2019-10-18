@@ -3,11 +3,13 @@ Ext.application({
     appFolder: '/extjs-app',
     requires: [
         'KuLib.publication.publication.PublicationGrid',
-        'KuLib.publication.book.BookGrid'
+        'KuLib.publication.book.BookGrid',
+        'KuLib.user.UserGrid'
     ],
 
     controllers: [
-        'KuLib.publication.book.BookController'
+        'KuLib.publication.book.BookController',
+        'KuLib.user.UserController'
     ],
 
     launch: function () {
@@ -34,6 +36,9 @@ Ext.application({
                                 { xtype: 'publicationgrid' },
                                 { xtype: 'bookgrid' }
                             ]
+                        },
+                        {
+                            xtype: 'usergrid'
                         },
                         {
                             title: 'Лалала',

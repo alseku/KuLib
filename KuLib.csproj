@@ -107,12 +107,17 @@
   <ItemGroup>
     <Content Include="extjs-app\base\BaseController.js" />
     <Content Include="extjs-app\base\BaseGrid.js" />
+    <Content Include="extjs-app\base\BaseStore.js" />
     <Content Include="extjs-app\base\BaseWindow.js" />
     <Content Include="extjs-app\css\VerticalTab.css" />
     <Content Include="extjs-app\publication\BasePublicationController.js" />
     <Content Include="extjs-app\publication\BasePublicationWindow.js" />
     <Content Include="extjs-app\publication\book\BookController.js" />
     <Content Include="extjs-app\publication\book\BookWindow.js" />
+    <Content Include="extjs-app\user\UserWindow.js" />
+    <Content Include="extjs-app\user\UserController.js" />
+    <Content Include="extjs-app\user\UserStore.js" />
+    <Content Include="extjs-app\user\UserModel.js" />
     <Content Include="extjs\resources\css\ext-all-access-debug.css" />
     <Content Include="extjs\resources\css\ext-all-access-rtl-debug.css" />
     <Content Include="extjs\resources\css\ext-all-access-rtl.css" />
@@ -3068,12 +3073,18 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Publication\UserController.cs" />
     <Compile Include="Controllers\Publication\BookController.cs" />
     <Compile Include="Controllers\Publication\PublicationController.cs" />
     <Compile Include="Dto\Publications\Books\BookEditDto.cs" />
     <Compile Include="Dto\Publications\Books\BookListDto.cs" />
     <Compile Include="Dto\Publications\PublicationEditDto.cs" />
     <Compile Include="Dto\Publications\PublicationListDto.cs" />
+    <Compile Include="Services\Users\UserService.cs" />
+    <Compile Include="SystemOverrides\JsonNetResult.cs" />
+    <Content Include="extjs-app\user\UserGrid.js" />
+    <Compile Include="Dto\Users\UserEditDto.cs" />
+    <Compile Include="Dto\Users\UserListDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
