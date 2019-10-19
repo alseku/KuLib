@@ -70,6 +70,8 @@
                     Ext.ComponentQuery.query(controller.gridXType).forEach(function (item) {
                         item.getStore().load();
                     });
+
+                    win.close();
                 }
                 else {
                     Ext.Msg.alert('Ошибка!', res.message);

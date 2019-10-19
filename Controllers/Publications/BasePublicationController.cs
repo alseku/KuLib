@@ -1,49 +1,29 @@
-﻿using KuLib.Dto.Publications.Books;
-using KuLib;
+﻿using KuLib.Dto.Publications;
+using KuLib.Models.Entities.Publications;
+using KuLib.Services.Publications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using KuLib.Models.Entities;
-using KuLib.Models.Entities.Publications;
-using KuLib.Services.Publications;
 
 namespace KuLib.Controllers.Publications
 {
-    public class BookController: Controller
+    public abstract class BasePublicationController<TEntity, TEditDto> : Controller
+        where TEntity : Publication, new()
+        where TEditDto : PublicationEditDto, new()
     {
-        public JsonResult List()
-        {
-            using (var dbc = new KuLibDbContext())
-            {
-                var data = dbc.Books.Select(x => new BookListDto
-                {
-                    Id = x.Id,
-                    InfoStr = x.InfoStr,
-                    BookTitle = x.BookTitle,
-                    Author = x.Author
-                }).ToArray();
-
-                return Json(new
-                {
-                    success = true,
-                    data = data
-                }, JsonRequestBehavior.AllowGet);
-            }
-        }
-
-        public JsonResult Create(BookEditDto model)
+        public JsonResult Create(TEditDto model)
         {
             try
             {
-                var bookService = new BookService();
-                var newBook = bookService.Create(model);
+                var service = GetService();
+                var newEntity = service.Create(model);
                 return Json(new
                 {
                     success = true,
                     message = "Создание прошло успешно",
-                    id = newBook.Id
+                    id = newEntity.Id
                 });
             }
             catch (Exception ex)
@@ -56,12 +36,12 @@ namespace KuLib.Controllers.Publications
             }
         }
 
-        public JsonResult Update(BookEditDto model)
+        public JsonResult Update(TEditDto model)
         {
             try
             {
-                var bookService = new BookService();
-                bookService.Update(model);
+                var service = GetService();
+                service.Update(model);
                 return Json(new
                 {
                     success = true,
@@ -82,8 +62,8 @@ namespace KuLib.Controllers.Publications
         {
             try
             {
-                var bookService = new BookService();
-                var data = bookService.Get(id);
+                var service = GetService();
+                var data = service.Get(id);
 
                 return Json(new
                 {
@@ -105,8 +85,8 @@ namespace KuLib.Controllers.Publications
         {
             try
             {
-                var bookService = new BookService();
-                bookService.Delete(id);
+                var service = GetService();
+                service.Delete(id);
 
                 return Json(new
                 {
@@ -122,5 +102,7 @@ namespace KuLib.Controllers.Publications
                 });
             }
         }
+
+        protected abstract BasePublicationService<TEntity, TEditDto> GetService();
     }
 }

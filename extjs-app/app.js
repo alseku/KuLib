@@ -4,12 +4,14 @@ Ext.application({
     requires: [
         'KuLib.publication.publication.PublicationGrid',
         'KuLib.publication.book.BookGrid',
+        'KuLib.publication.journalIssue.JournalIssueGrid',
         'KuLib.user.UserGrid'
     ],
 
     controllers: [
         'KuLib.publication.book.BookController',
-        'KuLib.user.UserController'
+        'KuLib.user.UserController',
+        'KuLib.publication.journalIssue.JournalIssueController'
     ],
 
     launch: function () {
@@ -34,15 +36,12 @@ Ext.application({
                             title: 'Библиотека',
                             items: [
                                 { xtype: 'publicationgrid' },
-                                { xtype: 'bookgrid' }
+                                { xtype: 'bookgrid' },
+                                { xtype: 'journalissuegrid'}
                             ]
                         },
                         {
                             xtype: 'usergrid'
-                        },
-                        {
-                            title: 'Лалала',
-                            html: '<h3>Добро пожаловать!</h3>'
                         }
                     ]
                 }
