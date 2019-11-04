@@ -8,23 +8,35 @@ using KuLib.Services.Publications;
 using KuLib.Dto.Users;
 using KuLib.Services.Users;
 using KuLib.SystemOverrides;
+using KuLib.Models.Arguments;
+using KuLib.Extensions;
 
 namespace KuLib.Controllers.Users
 {
     public class UserController: Controller
     {
-        public JsonNetResult List()
+        public JsonNetResult List([Bind()]BaseListArgs args)
         {
             using (var dbc = new KuLibDbContext())
             {
-                var data = dbc.Users.Select(x => new UserListDto
-                {
-                    Id = x.Id,
-                    FullName = x.FullName,
-                    BirthDate = x.BirthDate
-                }).ToArray();
+                var filteredQuery = dbc.Users;
+                var data = filteredQuery
+                    .OrderBy(x => x.FullName)
+                    .Page(args)
+                    .Select(x => new UserListDto
+                    {
+                        Id = x.Id,
+                        FullName = x.FullName,
+                        BirthDate = x.BirthDate
+                    }).ToArray();
 
-                return new JsonNetResult() { Data = data };
+                return new JsonNetResult() { Data = new
+                    {
+                        data = data,
+                        total = filteredQuery.Count(),
+                        success = true,
+                    }
+                };
             }
         }
 

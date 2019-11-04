@@ -25,24 +25,26 @@
         return columns;
     },
 
-    dockedItems: [
-        {
-            xtype: 'toolbar',
-            docked: 'top',
-            items: [
-                {
-                    text: 'Добавить',
-                    action: 'new'
-                },
-                {
-                    text: 'Редактировать',
-                    action: 'edit'
-                },
-                {
-                    text: 'Удалить',
-                    action: 'delete'
-                }
-            ]
-        }
-    ]
+    getDockedItemsTop: function () {
+        var items = this.callParent(arguments);
+        items.push(...[
+            {
+                text: 'Добавить',
+                action: 'new',
+                index: 1
+            },
+            {
+                text: 'Редактировать',
+                action: 'edit',
+                index: 2
+            },
+            {
+                text: 'Удалить',
+                action: 'delete',
+                index: 3
+            }
+        ]);
+
+        return items;
+    }
 });

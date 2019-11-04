@@ -3089,6 +3089,9 @@
     <Compile Include="Dto\Publications\JournalIssue\JournalIssueListDto.cs" />
     <Compile Include="Dto\Publications\PublicationEditDto.cs" />
     <Compile Include="Dto\Publications\PublicationListDto.cs" />
+    <Compile Include="Extensions\QueryExtension.cs" />
+    <Compile Include="Models\Arguments\BaseListArgs.cs" />
+    <Compile Include="Models\Arguments\PublicationListArgs.cs" />
     <Compile Include="Services\Publications\BasePublicationService.cs" />
     <Compile Include="Services\Publications\JournalIssueService.cs" />
     <Compile Include="Services\Users\UserService.cs" />
@@ -3129,6 +3132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Binders\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

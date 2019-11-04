@@ -9,7 +9,8 @@
         type: 'ajax',
         reader: {
             type: 'json',
-            root: 'data'
+            root: 'data',
+            totalProperty: 'total'
         }
     },
 

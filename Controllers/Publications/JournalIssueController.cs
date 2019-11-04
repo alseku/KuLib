@@ -9,28 +9,36 @@ using KuLib.Models.Entities;
 using KuLib.Models.Entities.Publications;
 using KuLib.Services.Publications;
 using KuLib.Dto.Publications.JournalIssue;
+using KuLib.Models.Arguments;
+using KuLib.Extensions;
 
 namespace KuLib.Controllers.Publications
 {
     public class JournalIssueController: BasePublicationController<JournalIssue, JournalIssueEditDto>
     {
-        public JsonResult List()
+        public JsonResult List([Bind()]PublicationListArgs args)
         {
             using (var dbc = new KuLibDbContext())
             {
-                var data = dbc.JournalIssues.Select(x => new JournalIssueListDto
-                {
-                    Id = x.Id,
-                    InfoStr = x.InfoStr,
-                    JournalTitle = x.JournalTitle,
-                    Volume = x.Volume,
-                    No = x.No
-                }).ToArray();
+                var filteredQuery = dbc.JournalIssues
+                    .Where(x => string.IsNullOrEmpty(args.InfoStrFilter) || x.InfoStr.Contains(args.InfoStrFilter));
+                var data = filteredQuery
+                    .OrderBy(x => x.InfoStr)
+                    .Page(args)
+                    .Select(x => new JournalIssueListDto
+                    {
+                        Id = x.Id,
+                        InfoStr = x.InfoStr,
+                        JournalTitle = x.JournalTitle,
+                        Volume = x.Volume,
+                        No = x.No
+                    }).ToArray();
 
                 return Json(new
                 {
                     success = true,
-                    data = data
+                    data = data,
+                    total = filteredQuery.Count()
                 }, JsonRequestBehavior.AllowGet);
             }
         }

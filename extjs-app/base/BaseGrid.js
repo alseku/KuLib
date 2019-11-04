@@ -11,6 +11,23 @@
     initComponent: function () {
         this.store = Ext.create(this.storeClassName);
         this.columns = this.getColumns();
+
+        this.dockedItems = [
+            {
+                xtype: 'toolbar',
+                docked: 'top',
+                items: this.getDockedItemsTop().sort(function (item1, item2) { return item1.index - item2.index; } )
+            },
+            {
+                xtype: 'pagingtoolbar',
+                store: this.store,
+                dock: 'bottom',
+                displayInfo: true
+            }
+        ];
+
+        this.store.on('beforeload', this.beforeLoad, this);
+
         this.callParent(arguments);
         this.store.load();
     },
@@ -25,5 +42,13 @@
 
     getAdditionalColumns: function () {
         return [];
+    },
+
+    getDockedItemsTop: function () {
+        return [];
+    },
+
+    beforeLoad: function (store, op) {
+
     }
 })
