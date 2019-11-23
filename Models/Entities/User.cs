@@ -52,5 +52,15 @@ namespace KuLib.Models.Entities
         /// </summary>
         [Required]
         public DateTime BirthDate { get; set; }
+
+        /// <summary>
+        /// Коллекция арендованных книг
+        /// </summary>
+        public virtual ICollection<PublicationInstance> RentedPublications { get; set; }
+
+        /// <summary>
+        /// Идентификационная строка
+        /// </summary>
+        public virtual string IdentString { get; set; }
     }
 }

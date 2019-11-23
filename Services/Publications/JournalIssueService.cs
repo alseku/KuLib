@@ -26,6 +26,8 @@ namespace KuLib.Services.Publications
             journalIssue.JournalTitle = model.JournalTitle;
             journalIssue.Volume = model.Volume;
             journalIssue.No = model.No;
+            journalIssue.InfoStr = $"{journalIssue.JournalTitle}, том {journalIssue.Volume}, выпуск {journalIssue.No}";
+
         }
 
         protected override void FillFromEntity(JournalIssueEditDto model, JournalIssue entity)
@@ -34,6 +36,7 @@ namespace KuLib.Services.Publications
             model.JournalTitle = entity.JournalTitle;
             model.Volume = entity.Volume;
             model.No = entity.No;
+            model.WindowXType = "journalissuewindow";
         }
 
         protected override DbSet<JournalIssue> GetSet(KuLibDbContext dbc)

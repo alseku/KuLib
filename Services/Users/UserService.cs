@@ -65,7 +65,8 @@ namespace KuLib.Services.Users
                     Surname = user.Surname,
                     Patronymic = user.Patronymic,
                     FullName = user.FullName,
-                    BirthDate = user.BirthDate
+                    BirthDate = user.BirthDate,
+                    IdentString = user.IdentString
                 };
 
                 return model;
@@ -100,6 +101,7 @@ namespace KuLib.Services.Users
             user.FullName = $"{user.Surname} {user.Name} {user.Patronymic}";
             user.ShortName = $"{user.Surname} {user.Name[0]}.{user.Patronymic[0]}.";
             user.BirthDate = model.BirthDate;
+            user.IdentString = $"{user.ShortName}, {user.BirthDate.ToString("dd.MM.yy")}";
         }
     }
 }

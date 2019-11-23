@@ -26,5 +26,20 @@ namespace KuLib.Dto.Users
         /// Дата рождения
         /// </summary>
         public DateTime BirthDate { get; set; }
+
+        /// <summary>
+        /// Идентификационная строка
+        /// </summary>
+        public string IdentString { get; set; }
+
+        /// <summary>
+        /// Количество арендованных в данный момент книг
+        /// </summary>
+        public int RentedCount { get; set; }
+
+        /// <summary>
+        /// Количество книг в аренде, срок сдачи которых уже истёк
+        /// </summary>
+        public int ExpiredCount { get; set; }
     }
 }

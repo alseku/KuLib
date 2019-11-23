@@ -24,6 +24,7 @@ namespace KuLib.Services.Publications
             base.FillFromModel(book, model);
             book.BookTitle = model.BookTitle;
             book.Author = model.Author;
+            book.InfoStr = $"{book.BookTitle}, {book.Author}";
         }
 
         protected override void FillFromEntity(BookEditDto model, Book entity)
@@ -31,6 +32,7 @@ namespace KuLib.Services.Publications
             base.FillFromEntity(model, entity);
             model.BookTitle = entity.BookTitle;
             model.Author = entity.Author;
+            model.WindowXType = "bookwindow";
         }
 
         protected override DbSet<Book> GetSet(KuLibDbContext dbc)

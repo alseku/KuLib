@@ -1,4 +1,5 @@
 ﻿using KuLib.Dto.Publications;
+using KuLib.Interfaces;
 using KuLib.Models.Entities;
 using KuLib.Models.Entities.Publications;
 using System;
@@ -9,7 +10,7 @@ using System.Web;
 
 namespace KuLib.Services.Publications
 {
-    public abstract class BasePublicationService<TEntity, TEditDto>
+    public abstract class BasePublicationService<TEntity, TEditDto> : IPublicationService
         where TEntity : Publication, new()
         where TEditDto: PublicationEditDto, new()
     {
@@ -65,6 +66,18 @@ namespace KuLib.Services.Publications
         }
 
         /// <summary>
+        /// Метод проекции сущности на модель редактирования
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public TEditDto Project(TEntity entity)
+        {
+            var model = new TEditDto();
+            FillFromEntity(model, entity);
+            return model;
+        }
+
+        /// <summary>
         /// Метод удаления книги
         /// </summary>
         /// <param name="id"></param>
@@ -87,7 +100,7 @@ namespace KuLib.Services.Publications
         /// <param name="model"></param>
         protected virtual void FillFromModel(TEntity entity, TEditDto model)
         {
-            entity.InfoStr = model.InfoStr;
+            
         }
 
         /// <summary>
@@ -102,5 +115,25 @@ namespace KuLib.Services.Publications
         }
 
         protected abstract DbSet<TEntity> GetSet(KuLibDbContext dbc);
+
+        public Publication Create(PublicationEditDto model)
+        {
+            return this.Create((TEditDto)model);
+        }
+
+        public void Update(PublicationEditDto model)
+        {
+            this.Update((PublicationEditDto)model);
+        }
+
+        PublicationEditDto IPublicationService.Get(long id)
+        {
+            return this.Get(id);
+        }
+
+        public PublicationEditDto Project(Publication entity)
+        {
+            return Project((TEntity)entity);
+        }
     }
 }

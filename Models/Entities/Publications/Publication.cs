@@ -20,5 +20,10 @@ namespace KuLib.Models.Entities.Publications
         /// </summary>
         public int Year { get; set; }
 
+        /// <summary>
+        /// Экземпляры публикации
+        /// </summary>
+        public virtual ICollection<PublicationInstance> PublicationInstances { get; set; }
+
     }
 }

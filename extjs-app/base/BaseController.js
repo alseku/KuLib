@@ -1,8 +1,12 @@
 ﻿Ext.define('KuLib.base.BaseController', {
     extend: 'Ext.app.Controller',
 
+    // xtype грида, который обслуживается данным контроллером
     gridXType: null,
+    // xtype окна редактирования, с котором работает контроллер
     windowXType: null,
+    // список гридов, данные в которых зависят от работы данного контроллера
+    relatedGridXTypes: [],
 
     controllerName: null,
     createAction: 'Create',
@@ -43,7 +47,7 @@
     },
 
     onNew: function () {
-        var window = Ext.widget(this.windowXType);
+        var window = Ext.widget(this.windowXType, { isNew: true });
     },
 
     onSave: function (button) {
@@ -70,11 +74,17 @@
                     Ext.ComponentQuery.query(controller.gridXType).forEach(function (item) {
                         item.getStore().load();
                     });
+                    
+                    controller.relatedGridXTypes.forEach(function (gridXType) {
+                        Ext.ComponentQuery.query(gridXType).forEach(function (item) {
+                            item.getStore().load();
+                        });
+                    });
 
                     win.close();
                 }
                 else {
-                    Ext.Msg.alert('Ошибка!', res.message);
+                    Ext.Msg.alert('Ошибка!', data.message);
                 }
             }
         });
@@ -108,6 +118,12 @@
                         Ext.ComponentQuery.query(controller.gridXType).forEach(function (item) {
                             item.getStore().load();
                         });
+
+                        controller.relatedGridXTypes.forEach(function (gridXType) {
+                            Ext.ComponentQuery.query(gridXType).forEach(function (item) {
+                                item.getStore().load();
+                            });
+                        });
                     } else {
                         Ext.Msg.alert('Ошибка!', res.message);
                     }
@@ -124,13 +140,18 @@
             success: function (response) {
                 var res = Ext.decode(response.responseText);
                 if (res.success) {
-                    var window = Ext.widget(controller.windowXType);
-                    debugger;
+                    var windowXType = controller.getWindowType(res.data);
+                    var window = Ext.widget(windowXType);
                     window.down('form').getForm().setValues(res.data);
+                    window.afterSetValues();
                 } else {
                     Ext.Msg.alert('Ошибка!', res.message);
                 }
             }
         });
+    },
+
+    getWindowType: function (record) {
+        return this.windowXType;
     }
 });

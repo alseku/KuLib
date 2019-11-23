@@ -11,7 +11,9 @@ Ext.application({
     controllers: [
         'KuLib.publication.book.BookController',
         'KuLib.user.UserController',
-        'KuLib.publication.journalIssue.JournalIssueController'
+        'KuLib.publication.journalIssue.JournalIssueController',
+        'KuLib.publication.publication.PublicationController',
+        'KuLib.publicationInstance.PublicationInstanceController'
     ],
 
     launch: function () {

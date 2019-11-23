@@ -7,6 +7,7 @@
 
     gridXType: 'journalissuegrid',
     windowXType: 'journalissuewindow',
+    relatedGridXTypes: ['publicationgrid'],
 
     controllerName: 'JournalIssue'
 });

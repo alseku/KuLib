@@ -29,7 +29,10 @@ namespace KuLib.Controllers.Publications
                         Id = x.Id,
                         InfoStr = x.InfoStr,
                         BookTitle = x.BookTitle,
-                        Author = x.Author
+                        Author = x.Author,
+                        PublicationInstancesCount = x.PublicationInstances.Count(),
+                        FreePublicationInstancesCount = x.PublicationInstances.Where(y => y.RentingUser == null).Count()
+
                     }).ToArray();
 
                 return Json(new

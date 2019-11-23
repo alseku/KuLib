@@ -7,6 +7,7 @@
 
     gridXType: 'bookgrid',
     windowXType: 'bookwindow',
+    relatedGridXTypes: ['publicationgrid'],
 
     controllerName: 'Book'
 });

@@ -5,6 +5,7 @@
 
     extend: 'Ext.grid.Panel',
     title: '',
+    autoLoadData: true,
 
     storeClassName: null,
 
@@ -29,7 +30,9 @@
         this.store.on('beforeload', this.beforeLoad, this);
 
         this.callParent(arguments);
-        this.store.load();
+        if (this.autoLoadData) {
+            this.store.load();
+        }
     },
 
     getColumns: function () {

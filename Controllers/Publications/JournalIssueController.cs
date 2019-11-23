@@ -31,7 +31,9 @@ namespace KuLib.Controllers.Publications
                         InfoStr = x.InfoStr,
                         JournalTitle = x.JournalTitle,
                         Volume = x.Volume,
-                        No = x.No
+                        No = x.No,
+                        PublicationInstancesCount = x.PublicationInstances.Count(),
+                        FreePublicationInstancesCount = x.PublicationInstances.Where(y => y.RentingUser == null).Count()
                     }).ToArray();
 
                 return Json(new

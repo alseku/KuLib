@@ -110,6 +110,11 @@
     <Content Include="extjs-app\base\BaseStore.js" />
     <Content Include="extjs-app\base\BaseWindow.js" />
     <Content Include="extjs-app\css\VerticalTab.css" />
+    <Content Include="extjs-app\publicationInstance\PublicationInstanceController.js" />
+    <Content Include="extjs-app\publicationInstance\PublicationInstanceGrid.js" />
+    <Content Include="extjs-app\publicationInstance\PublicationInstanceModel.js" />
+    <Content Include="extjs-app\publicationInstance\PublicationInstanceStore.js" />
+    <Content Include="extjs-app\publicationInstance\PublicationInstanceWindow.js" />
     <Content Include="extjs-app\publication\BasePublicationController.js" />
     <Content Include="extjs-app\publication\BasePublicationWindow.js" />
     <Content Include="extjs-app\publication\book\BookController.js" />
@@ -119,6 +124,7 @@
     <Content Include="extjs-app\publication\journalIssue\JournalIssueModel.js" />
     <Content Include="extjs-app\publication\journalIssue\JournalIssueStore.js" />
     <Content Include="extjs-app\publication\journalIssue\JournalIssueWindow.js" />
+    <Content Include="extjs-app\publication\publication\PublicationController.js" />
     <Content Include="extjs-app\user\UserWindow.js" />
     <Content Include="extjs-app\user\UserController.js" />
     <Content Include="extjs-app\user\UserStore.js" />
@@ -3080,25 +3086,34 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Publications\BasePublicationController.cs" />
     <Compile Include="Controllers\Publications\JournalIssueController.cs" />
-    <Compile Include="Controllers\Publications\UserController.cs" />
+    <Compile Include="Controllers\PublicationInstanceController.cs" />
     <Compile Include="Controllers\Publications\BookController.cs" />
     <Compile Include="Controllers\Publications\PublicationController.cs" />
-    <Compile Include="Dto\Publications\Books\BookEditDto.cs" />
-    <Compile Include="Dto\Publications\Books\BookListDto.cs" />
-    <Compile Include="Dto\Publications\JournalIssue\JournalIssueEditDto.cs" />
-    <Compile Include="Dto\Publications\JournalIssue\JournalIssueListDto.cs" />
-    <Compile Include="Dto\Publications\PublicationEditDto.cs" />
-    <Compile Include="Dto\Publications\PublicationListDto.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\Arguments\UserListArgs.cs" />
+    <Compile Include="Models\Dto\PublicationInstances\PublicationInstanceListDto.cs" />
+    <Compile Include="Models\Dto\PublicationInstances\PublicationInstanceEditDto.cs" />
+    <Compile Include="Models\Dto\Publications\Books\BookEditDto.cs" />
+    <Compile Include="Models\Dto\Publications\Books\BookListDto.cs" />
+    <Compile Include="Models\Dto\Publications\JournalIssue\JournalIssueEditDto.cs" />
+    <Compile Include="Models\Dto\Publications\JournalIssue\JournalIssueListDto.cs" />
+    <Compile Include="Models\Dto\Publications\PublicationEditDto.cs" />
+    <Compile Include="Models\Dto\Publications\PublicationListDto.cs" />
     <Compile Include="Extensions\QueryExtension.cs" />
+    <Compile Include="Interfaces\IPublicationService.cs" />
     <Compile Include="Models\Arguments\BaseListArgs.cs" />
+    <Compile Include="Models\Arguments\PublicationInstanceListArgs.cs" />
     <Compile Include="Models\Arguments\PublicationListArgs.cs" />
+    <Compile Include="Models\Entities\PublicationInstance.cs" />
+    <Compile Include="Services\PublicationInstances\PublicationInstanceService.cs" />
     <Compile Include="Services\Publications\BasePublicationService.cs" />
     <Compile Include="Services\Publications\JournalIssueService.cs" />
+    <Compile Include="Services\Publications\PublicationServiceCreator.cs" />
     <Compile Include="Services\Users\UserService.cs" />
     <Compile Include="SystemOverrides\JsonNetResult.cs" />
     <Content Include="extjs-app\user\UserGrid.js" />
-    <Compile Include="Dto\Users\UserEditDto.cs" />
-    <Compile Include="Dto\Users\UserListDto.cs" />
+    <Compile Include="Models\Dto\Users\UserEditDto.cs" />
+    <Compile Include="Models\Dto\Users\UserListDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3132,7 +3147,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Binders\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

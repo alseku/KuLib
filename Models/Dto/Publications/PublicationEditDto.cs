@@ -16,5 +16,10 @@ namespace KuLib.Dto.Publications
         /// Информационная строка
         /// </summary>
         public string InfoStr { get; set; }
+
+        /// <summary>
+        /// Псевдоним окна редактирования
+        /// </summary>
+        public string WindowXType { get; set; }
     }
 }

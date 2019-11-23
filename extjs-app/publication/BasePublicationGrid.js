@@ -26,7 +26,16 @@
             header: 'Информационная строка',
             dataIndex: 'InfoStr',
             width: 200
-
+        });
+        columns.push({
+            header: 'Кол-во',
+            dataIndex: 'PublicationInstancesCount',
+            width: 100
+        });
+        columns.push({
+            header: 'В наличии',
+            dataIndex: 'FreePublicationInstancesCount',
+            width: 100
         });
         return columns;
     },

@@ -11,15 +11,21 @@ using KuLib.SystemOverrides;
 using KuLib.Models.Arguments;
 using KuLib.Extensions;
 
-namespace KuLib.Controllers.Users
+namespace KuLib.Controllers
 {
     public class UserController: Controller
     {
-        public JsonNetResult List([Bind()]BaseListArgs args)
+        public JsonNetResult List([Bind()]UserListArgs args)
         {
             using (var dbc = new KuLibDbContext())
             {
-                var filteredQuery = dbc.Users;
+                var currentDate = DateTime.Now;
+                var filteredQuery = dbc.Users.Select(x => x);
+                if (args.HasExpired)
+                {
+                    filteredQuery = filteredQuery.Where(x => x.RentedPublications.Where(y => y.ReturnDate < currentDate).Count() > 0);
+                }
+
                 var data = filteredQuery
                     .OrderBy(x => x.FullName)
                     .Page(args)
@@ -27,7 +33,10 @@ namespace KuLib.Controllers.Users
                     {
                         Id = x.Id,
                         FullName = x.FullName,
-                        BirthDate = x.BirthDate
+                        BirthDate = x.BirthDate,
+                        IdentString = x.IdentString,
+                        RentedCount = x.RentedPublications.Count(),
+                        ExpiredCount = x.RentedPublications.Where(y => y.ReturnDate < currentDate).Count()
                     }).ToArray();
 
                 return new JsonNetResult() { Data = new

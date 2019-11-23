@@ -2,6 +2,10 @@
     extend: 'KuLib.base.BaseWindow',
     alias: 'widget.userwindow',
 
+    requires: [
+        'KuLib.publicationInstance.PublicationInstanceGrid'
+    ],
+
     title: 'Пользователь',
 
     getAdditionalItems: function () {
@@ -29,10 +33,23 @@
             name: 'BirthDate',
             fieldLabel: 'Дата рождения',
             allowBlank: false,
-            format: 'd/m/Y',
+            format: 'd.m.Y',
             altFormats: 'c'
         });
 
         return items;
+    },
+
+    getNotFormItems: function () {
+        var items = this.callParent(arguments);
+        items.push({ xtype: 'publicationinstancegrid', index: 10, height: 300, forUserWin: true, title: 'Книги' });
+        return items;
+    },
+
+    afterSetValues: function () {
+        this.callParent(arguments);
+        var publicationInstanceGrid = this.down('publicationinstancegrid')
+        publicationInstanceGrid.UserId = this.down('form').getForm().getValues().Id;
+        publicationInstanceGrid.store.load();
     }
 });
