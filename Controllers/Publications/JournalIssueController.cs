@@ -1,5 +1,4 @@
-﻿using KuLib.Dto.Publications.Books;
-using KuLib;
+﻿using KuLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +15,16 @@ namespace KuLib.Controllers.Publications
 {
     public class JournalIssueController: BasePublicationController<JournalIssue, JournalIssueEditDto>
     {
-        public JsonResult List([Bind()]PublicationListArgs args)
+        public JsonResult List(PublicationListArgs args)
         {
             using (var dbc = new KuLibDbContext())
             {
-                var filteredQuery = dbc.JournalIssues
-                    .Where(x => string.IsNullOrEmpty(args.InfoStrFilter) || x.InfoStr.Contains(args.InfoStrFilter));
+                //var filteredQuery = dbc.JournalIssues
+                //    .Where(x => string.IsNullOrEmpty(args.InfoStrFilter) || x.InfoStr.Contains(args.InfoStrFilter));
+                IQueryable<JournalIssue> filteredQuery = dbc.JournalIssues;
+                if ( !string.IsNullOrEmpty(args.InfoStrFilter) )
+                    filteredQuery = filteredQuery.Where(x => x.InfoStr.Contains(args.InfoStrFilter));
+
                 var data = filteredQuery
                     .OrderBy(x => x.InfoStr)
                     .Page(args)
@@ -29,6 +32,7 @@ namespace KuLib.Controllers.Publications
                     {
                         Id = x.Id,
                         InfoStr = x.InfoStr,
+                        Year = x.Year,
                         JournalTitle = x.JournalTitle,
                         Volume = x.Volume,
                         No = x.No,

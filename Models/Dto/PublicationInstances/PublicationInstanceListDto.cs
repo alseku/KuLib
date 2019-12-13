@@ -18,7 +18,5 @@ namespace KuLib.Dto.PublicationInstances
         public string UserShortName { get; set; }
 
         public DateTime? ReturnDate { get; set; }
-
-        public bool IsFree { get; set; }
     }
 }

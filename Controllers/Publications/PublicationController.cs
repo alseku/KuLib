@@ -15,13 +15,16 @@ namespace KuLib.Controllers.Publications
 {
     public class PublicationController : Controller
     {
-        public JsonResult List([Bind()]PublicationListArgs args)
+        public JsonResult List(PublicationListArgs args)
         {
             using (var dbc = new KuLibDbContext())
             {
-                var filteredQuery = dbc.Publications
-                    .Where(x => string.IsNullOrEmpty(args.InfoStrFilter) || x.InfoStr.Contains(args.InfoStrFilter));
-                
+                //var filteredQuery = dbc.Publications
+                //    .Where(x => string.IsNullOrEmpty(args.InfoStrFilter) || x.InfoStr.Contains(args.InfoStrFilter));
+                IQueryable<Publication> filteredQuery = dbc.Publications;
+                if (!string.IsNullOrEmpty(args.InfoStrFilter))
+                    filteredQuery = filteredQuery.Where(x => x.InfoStr.Contains(args.InfoStrFilter));
+
                 var data = filteredQuery
                     .OrderBy(x => x.InfoStr)
                     .Page(args)
@@ -29,6 +32,7 @@ namespace KuLib.Controllers.Publications
                     {
                         Id = x.Id,
                         InfoStr = x.InfoStr,
+                        Year = x.Year,
                         PublicationInstancesCount = x.PublicationInstances.Count(),
                         FreePublicationInstancesCount = x.PublicationInstances.Where(y => y.RentingUser == null).Count()
                     }).ToArray();
@@ -73,6 +77,33 @@ namespace KuLib.Controllers.Publications
         {
             var serviceCreator = new PublicationServiceCreator();
             return serviceCreator.CreateService(entity);
+        }
+
+        public JsonResult Delete(long id)
+        {
+            try
+            {
+                using (var dbc = new KuLibDbContext())
+                {
+                    var entity = dbc.Publications.Find(id);
+                    dbc.Publications.Remove(entity);
+
+                    dbc.SaveChanges();
+
+                    return Json(new
+                    {
+                        success = true
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = ex.Message
+                });
+            }
         }
     }
 }

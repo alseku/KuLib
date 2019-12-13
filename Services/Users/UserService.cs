@@ -10,12 +10,12 @@ using System.Web;
 namespace KuLib.Services.Users
 {
     /// <summary>
-    /// Сервис для работы с книгами
+    /// Сервис для работы с читателями
     /// </summary>
     public class UserService
     {
         /// <summary>
-        /// Метод создания новой книги
+        /// Метод создания нового читателя
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace KuLib.Services.Users
         }
 
         /// <summary>
-        /// Метод редактирования книги
+        /// Метод редактирования читателя
         /// </summary>
         /// <param name="model"></param>
         public void Update(UserEditDto model)
@@ -49,7 +49,7 @@ namespace KuLib.Services.Users
         }
 
         /// <summary>
-        /// Метод получения ммодели книги
+        /// Метод получения модели читателя
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -66,15 +66,14 @@ namespace KuLib.Services.Users
                     Patronymic = user.Patronymic,
                     FullName = user.FullName,
                     BirthDate = user.BirthDate,
-                    IdentString = user.IdentString
-                };
+            };
 
                 return model;
             }
         }
 
         /// <summary>
-        /// Метод удаления книги
+        /// Метод удаления читателя
         /// </summary>
         /// <param name="id"></param>
         public void Delete(long id)
@@ -101,7 +100,6 @@ namespace KuLib.Services.Users
             user.FullName = $"{user.Surname} {user.Name} {user.Patronymic}";
             user.ShortName = $"{user.Surname} {user.Name[0]}.{user.Patronymic[0]}.";
             user.BirthDate = model.BirthDate;
-            user.IdentString = $"{user.ShortName}, {user.BirthDate.ToString("dd.MM.yy")}";
         }
     }
 }

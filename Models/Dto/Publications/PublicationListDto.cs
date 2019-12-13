@@ -11,6 +11,8 @@ namespace KuLib.Dto.Publications
 
         public string InfoStr { get; set; }
 
+        public int Year { get; set; }
+
         public int PublicationInstancesCount { get; set; }
 
         public int FreePublicationInstancesCount { get; set; }

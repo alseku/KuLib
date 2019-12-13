@@ -15,12 +15,18 @@
             header: 'Название',
             dataIndex: 'BookTitle',
             width: 100
-        });
-        columns.push({
+        },
+        {
             header: 'Автор(ы)',
             dataIndex: 'Author',
             width: 100
-        });
+        },
+        {
+            header: 'Год',
+            dataIndex: 'Year',
+            width: 80
+        },
+        );
 
         return columns;
     },

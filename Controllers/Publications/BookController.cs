@@ -1,5 +1,4 @@
-﻿using KuLib.Dto.Publications.Books;
-using KuLib;
+﻿using KuLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Web.Mvc;
 using KuLib.Models.Entities;
 using KuLib.Models.Entities.Publications;
 using KuLib.Services.Publications;
+using KuLib.Dto.Publications.Books;
 using KuLib.Models.Arguments;
 using KuLib.Extensions;
 
@@ -15,12 +15,16 @@ namespace KuLib.Controllers.Publications
 {
     public class BookController: BasePublicationController<Book, BookEditDto>
     {
-        public JsonResult List([Bind()]PublicationListArgs args)
+        public JsonResult List(PublicationListArgs args)
         {
             using (var dbc = new KuLibDbContext())
             {
-                var filteredQuery = dbc.Books
-                    .Where(x => string.IsNullOrEmpty(args.InfoStrFilter) || x.InfoStr.Contains(args.InfoStrFilter));
+                //var filteredQuery = dbc.Books
+                //    .Where(x => string.IsNullOrEmpty(args.InfoStrFilter) || x.InfoStr.Contains(args.InfoStrFilter));
+                IQueryable<Book> filteredQuery = dbc.Books;
+                if ( !string.IsNullOrEmpty(args.InfoStrFilter) ) 
+                    filteredQuery = filteredQuery.Where(x => x.InfoStr.Contains(args.InfoStrFilter));
+                                
                 var data = filteredQuery
                     .OrderBy(x => x.InfoStr)
                     .Page(args)
@@ -28,6 +32,7 @@ namespace KuLib.Controllers.Publications
                     {
                         Id = x.Id,
                         InfoStr = x.InfoStr,
+                        Year = x.Year,
                         BookTitle = x.BookTitle,
                         Author = x.Author,
                         PublicationInstancesCount = x.PublicationInstances.Count(),

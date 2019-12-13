@@ -17,7 +17,7 @@ namespace KuLib.Controllers
 {
     public class PublicationInstanceController: Controller
     {
-        public JsonNetResult List([Bind()]PublicationInstanceListArgs args)
+        public JsonNetResult List(PublicationInstanceListArgs args)
         {
             using (var dbc = new KuLibDbContext())
             {
@@ -34,7 +34,6 @@ namespace KuLib.Controllers
                         PublicationInfoStr = x.Publication.InfoStr,
                         UserId = x.RentingUser.Id,
                         UserShortName = x.RentingUser.ShortName,
-                        IsFree = x.RentingUser == null,
                         ReturnDate = x.ReturnDate
                     }).ToArray();
 
@@ -45,6 +44,28 @@ namespace KuLib.Controllers
                         success = true,
                     }
                 };
+            }
+        }
+
+        public JsonResult ListFree(PublicationInstanceListArgs args)
+        {
+            using (var dbc = new KuLibDbContext())
+            {
+                var filteredQuery = dbc.PublicationInstances
+                    .Where(x => x.Publication.Id == args.PublicationId && x.RentingUser == null);
+                var data = filteredQuery
+                    .OrderBy(x => x.Id)
+                    .Page(args)
+                    .Select(x => new { Id = x.Id })
+                    .ToArray();
+
+                return Json(new
+                {
+                    success = true,
+                    data = data,
+                    total = filteredQuery.Count(),
+                }, JsonRequestBehavior.AllowGet);
+
             }
         }
 

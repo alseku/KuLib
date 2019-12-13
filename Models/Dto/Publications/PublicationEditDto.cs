@@ -18,8 +18,15 @@ namespace KuLib.Dto.Publications
         public string InfoStr { get; set; }
 
         /// <summary>
+        /// Год издания
+        /// </summary>
+        public int Year { get; set; }
+
+        /// <summary>
         /// Псевдоним окна редактирования
         /// </summary>
         public string WindowXType { get; set; }
+        
+
     }
 }

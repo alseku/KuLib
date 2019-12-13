@@ -8,5 +8,6 @@
     gridXType: 'usergrid',
     windowXType: 'userwindow',
 
-    controllerName: 'User'
+    controllerName: 'User',
+
 });

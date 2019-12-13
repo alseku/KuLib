@@ -13,7 +13,7 @@ namespace KuLib.Models.Entities.Publications
         /// <summary>
         /// Наименование журнала
         /// </summary>
-        [MaxLength(100)]
+        [MaxLength(400)]
         [Required]
         public string JournalTitle { get; set; }
 

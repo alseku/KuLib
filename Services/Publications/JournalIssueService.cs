@@ -26,7 +26,7 @@ namespace KuLib.Services.Publications
             journalIssue.JournalTitle = model.JournalTitle;
             journalIssue.Volume = model.Volume;
             journalIssue.No = model.No;
-            journalIssue.InfoStr = $"{journalIssue.JournalTitle}, том {journalIssue.Volume}, выпуск {journalIssue.No}";
+            journalIssue.InfoStr = $"{journalIssue.JournalTitle}, том {journalIssue.Volume}, выпуск {journalIssue.No} ({journalIssue.Year})";
 
         }
 

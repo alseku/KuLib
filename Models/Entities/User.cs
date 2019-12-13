@@ -14,36 +14,36 @@ namespace KuLib.Models.Entities
         /// <summary>
         /// Имя
         /// </summary>
-        [MaxLength(4000)]
+        [MaxLength(200)]
         [Required]
         public string Name { get; set; }
 
         /// <summary>
         /// Отчество
         /// </summary>
-        [MaxLength(4000)]
+        [MaxLength(200)]
         [Required]
         public string Patronymic { get; set; }
 
         /// <summary>
         /// Фамилия
         /// </summary>
-        [MaxLength(4000)]
+        [MaxLength(200)]
         [Required]
         public string Surname { get; set; }
 
 
         /// <summary>
-        /// "Имя Отчество Фамилия"
+        /// "Фамилия Имя Отчество"
         /// </summary>
-        [MaxLength(4000)]
+        [MaxLength(200)]
         [Required]
         public string FullName { get; set; }
 
         /// <summary>
-        /// "И.О. Фамилия"
+        /// "Фамилия И.О."
         /// </summary>
-        [MaxLength(4000)]
+        [MaxLength(200)]
         [Required]
         public string ShortName { get; set; }
 
@@ -54,13 +54,10 @@ namespace KuLib.Models.Entities
         public DateTime BirthDate { get; set; }
 
         /// <summary>
-        /// Коллекция арендованных книг
+        /// Коллекция выданных читателю книг
         /// </summary>
         public virtual ICollection<PublicationInstance> RentedPublications { get; set; }
 
-        /// <summary>
-        /// Идентификационная строка
-        /// </summary>
-        public virtual string IdentString { get; set; }
+
     }
 }

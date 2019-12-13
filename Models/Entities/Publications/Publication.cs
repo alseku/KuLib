@@ -11,7 +11,7 @@ namespace KuLib.Models.Entities.Publications
         [Key]
         public int Id { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(400)]
         [Required]
         public string InfoStr { get; set; }
 

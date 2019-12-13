@@ -14,5 +14,7 @@ namespace KuLib.Models.Arguments
         /// Есть задолженность
         /// </summary>
         public bool HasExpired { get; set; }
+
+        public string query { get; set; }
     }
 }

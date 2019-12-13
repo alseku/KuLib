@@ -18,7 +18,7 @@ namespace KuLib.Dto.Users
         public long Id { get; set; }
 
         /// <summary>
-        /// Полное имя пользователя
+        /// Полное имя читателя
         /// </summary>
         public string FullName { get; set; }
 
@@ -26,11 +26,6 @@ namespace KuLib.Dto.Users
         /// Дата рождения
         /// </summary>
         public DateTime BirthDate { get; set; }
-
-        /// <summary>
-        /// Идентификационная строка
-        /// </summary>
-        public string IdentString { get; set; }
 
         /// <summary>
         /// Количество арендованных в данный момент книг

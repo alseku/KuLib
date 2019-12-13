@@ -13,7 +13,12 @@
 
     getNotFormItems: function () {
         var items = this.callParent(arguments);
-        items.push({ xtype: 'publicationinstancegrid', index: 10, height: 300 });
+        items.push({
+            xtype: 'publicationinstancegrid',
+            index: 10,
+            height: 300,
+            flex: 1,
+        });
         return items;
     },
 
@@ -22,5 +27,21 @@
         var publicationInstanceGrid = this.down('publicationinstancegrid')
         publicationInstanceGrid.PublicationId = this.down('form').getForm().getValues().Id;
         publicationInstanceGrid.store.load();
+    },
+
+    getAdditionalTopBarItems: function () {
+        var topBarItems = this.callParent();
+        topBarItems.push(
+            {
+                text: 'Сохранить',
+                action: 'saveRecord'
+            },
+            {
+                text: 'Удалить',
+                action: 'deleteRecord',
+                disabled: true
+            }
+        );
+        return topBarItems;
     }
 });

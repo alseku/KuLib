@@ -15,17 +15,23 @@
             header: 'Наименование журнала',
             dataIndex: 'JournalTitle',
             width: 150
-        });
-        columns.push({
+        },
+        {
             header: 'Номер тома',
             dataIndex: 'Volume',
             width: 100
-        });
-        columns.push({
+        },
+        {
             header: 'Номер выпуска',
             dataIndex: 'No',
             width: 100
-        });
+        },
+        {
+            header: 'Год',
+            dataIndex: 'Year',
+            width: 80
+        },
+        );
 
         return columns;
     },

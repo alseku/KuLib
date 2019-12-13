@@ -15,7 +15,7 @@ namespace KuLib.Services.Publications
         where TEditDto: PublicationEditDto, new()
     {
         /// <summary>
-        /// Метод создания новой книги
+        /// Метод создания новой публикации
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace KuLib.Services.Publications
         }
 
         /// <summary>
-        /// Метод редактирования книги
+        /// Метод редактирования публикации
         /// </summary>
         /// <param name="model"></param>
         public void Update(TEditDto model)
@@ -49,7 +49,7 @@ namespace KuLib.Services.Publications
         }
 
         /// <summary>
-        /// Метод получения ммодели книги
+        /// Метод получения модели публикации
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -78,7 +78,7 @@ namespace KuLib.Services.Publications
         }
 
         /// <summary>
-        /// Метод удаления книги
+        /// Метод удаления публикации
         /// </summary>
         /// <param name="id"></param>
         public void Delete(long id)
@@ -100,7 +100,7 @@ namespace KuLib.Services.Publications
         /// <param name="model"></param>
         protected virtual void FillFromModel(TEntity entity, TEditDto model)
         {
-            
+            entity.Year = model.Year;
         }
 
         /// <summary>
@@ -112,6 +112,7 @@ namespace KuLib.Services.Publications
         {
             model.Id = entity.Id;
             model.InfoStr = entity.InfoStr;
+            model.Year = entity.Year;
         }
 
         protected abstract DbSet<TEntity> GetSet(KuLibDbContext dbc);

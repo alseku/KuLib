@@ -18,7 +18,7 @@ namespace KuLib.Models.Entities.Publications
         public string BookTitle { get; set; }
 
         /// <summary>
-        /// Автор(ы)
+        /// Автор(ы) книги
         /// </summary>
         [MaxLength(200)]
         [Required]

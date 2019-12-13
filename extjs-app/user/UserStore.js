@@ -4,5 +4,5 @@
     requires: ['KuLib.user.UserModel'],
 
     proxyUrl: '/User/List',
-    model: 'KuLib.user.UserModel'
+    model: 'KuLib.user.UserModel',
 });

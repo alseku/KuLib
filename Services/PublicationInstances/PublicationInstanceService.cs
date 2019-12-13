@@ -37,7 +37,7 @@ namespace KuLib.Services.PublicationInstances
                     }
                     else
                     {
-                        throw new Exception("При передаче книги пользователю необходимо заполнить дату возврата книги.");
+                        throw new Exception("При выдаче экземпляра читателю на руки необходимо заполнить дату возврата.");
                     }
                 }
                 else

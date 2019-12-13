@@ -2,30 +2,45 @@
     extend: 'KuLib.publication.BasePublicationWindow',
     alias: 'widget.journalissuewindow',
 
-    title: 'Журналы',
+    title: 'Публикация (Журнал)',
 
     getAdditionalItems: function () {
         var items = this.callParent(arguments);
         items.push({
             xtype: 'textfield',
             name: 'JournalTitle',
-            fieldLabel: 'Наименование журнала',
+            fieldLabel: 'Название журнала',
             allowBlank: false,
             index: 2
-        });
-        items.push({
+        },
+        {
             xtype: 'numberfield',
             name: 'Volume',
             fieldLabel: 'Номер тома',
             allowBlank: false,
+            allowDecimals: false,
+            minValue:1,
             index: 3
-        });
-        items.push({
+        },
+        {
             xtype: 'numberfield',
             name: 'No',
             fieldLabel: 'Номер выпуска',
-            allowBlank: false
-        });
+            allowBlank: false,
+            allowDecimals: false,
+            minValue: 1,
+            index: 4
+        },
+        {
+            xtype: 'numberfield',
+            name: 'Year',
+            fieldLabel: 'Год',
+            allowBlank: false,
+            allowDecimals: false,
+            //minValue: 1,
+            index: 5
+        },
+        );
 
         return items;
     }

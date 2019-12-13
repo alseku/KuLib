@@ -3121,11 +3121,9 @@
     <Content Include="extjs-app\publication\book\BookModel.js" />
     <Content Include="extjs-app\publication\publication\PublicationGrid.js" />
     <Compile Include="Models\Entities\Publications\Book.cs" />
-    <Compile Include="Models\Entities\Publications\Collection.cs" />
     <Compile Include="Models\Entities\Publications\JournalIssue.cs" />
     <Compile Include="Models\Entities\Publications\Publication.cs" />
     <Compile Include="Models\Entities\KuLibDbContext.cs" />
-    <Compile Include="Models\Entities\Publications\SerialBook.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

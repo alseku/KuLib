@@ -2,7 +2,7 @@
     extend: 'KuLib.publication.BasePublicationWindow',
     alias: 'widget.bookwindow',
 
-    title: 'Книга',
+    title: 'Публикация (Книга)',
 
     getAdditionalItems: function () {
         var items = this.callParent(arguments);
@@ -12,15 +12,24 @@
             fieldLabel: 'Наименование',
             allowBlank: false,
             index: 2,
-            padding: '5 0 0 0'
-        });
-        items.push({
+        },
+        {
             xtype: 'textfield',
             name: 'Author',
             fieldLabel: 'Автор(ы)',
             allowBlank: false,
             index: 3
-        });
+        },
+        {
+            xtype: 'numberfield',
+            name: 'Year',
+            fieldLabel: 'Год издания',
+            allowBlank: false,
+            allowDecimals: false,
+            //minValue: 1,
+            index: 4
+        },
+        );
 
         return items;
     }

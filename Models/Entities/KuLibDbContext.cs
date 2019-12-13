@@ -20,7 +20,7 @@ namespace KuLib.Models.Entities
             // то нужно пересоздать базу данных с новой структурой
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<KuLibDbContext>());
 
-            this.Database.Initialize(false);
+            Database.Initialize(false);
         }
 
         public DbSet<Publication> Publications { get; set; }

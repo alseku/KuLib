@@ -11,6 +11,10 @@
             type: 'string'
         },
         {
+            name: 'Year',
+            type: 'int'
+        },
+        {
             name: 'JournalTitle',
             type: 'string'
         },
@@ -29,6 +33,13 @@
         {
             name: 'FreePublicationInstancesCount',
             type: 'int'
+        },
+        {
+            name: 'RentedPublicationInstancesCount',
+            type: 'int',
+            convert: function (value, record) {
+                return record.get('PublicationInstancesCount') - record.get('FreePublicationInstancesCount');
+            }
         }
     ]
 });

@@ -4,19 +4,33 @@
     ],
 
     extend: 'KuLib.base.BaseGrid',
-    title: 'Пользователи',
     alias: 'widget.usergrid',
 
     storeClassName: 'KuLib.user.UserStore',
 
     initComponent: function () {
+        this.listeners = {
+            select: { fn: this.onSelectRecord, scope: this },
+        };
+        
         this.callParent(arguments);
 
         var grid = this;
 
-        this.down('checkbox[name=HasExpired]').on('change', function () {
+        grid.down('checkbox[name=HasExpired]').on('change', function () {
             grid.getStore().load();
         });
+        grid.down('textfield[name=query]').on('keydown', function (field, e) {
+            if (e.keyCode === 13) {
+                grid.getStore().load();
+            }
+        });
+    },
+
+    onSelectRecord: function (rowModel, record) {
+        var grid = this;
+        grid.down('button[action=delete]').setDisabled(record.get('RentedCount'));
+        grid.down('button[action=edit]').setDisabled(false);
     },
 
     getAdditionalColumns: function () {
@@ -34,12 +48,12 @@
             width: 100
         });
         columns.push({
-            header: 'В аренде',
+            header: 'Выдано',
             dataIndex: 'RentedCount',
-            width: 80
+            width: 60
         });
         columns.push({
-            header: 'В задолженности',
+            header: 'Просрочено',
             dataIndex: 'ExpiredCount',
             width: 80
         });
@@ -70,23 +84,37 @@
                 index: 9
             },
             {
+                xtype: 'textfield',
+                name: 'query',
+                labelAlign: 'left',
+                fieldLabel: 'Фильтрация по ФИО',
+                labelWidth: 110,
+                width: 500,
+                padding: '0 20 0 0',
+                enableKeyEvents: true,
+                index: 10
+            },
+            {
                 xtype: 'checkbox',
                 name: 'HasExpired',
                 labelAlign: 'left',
                 fieldLabel: 'Есть задолженность',
                 labelWidth: 110,
                 padding: '0 5 0 0',
-                index: 10
-            }
+                index: 11
+            },
         ]);
 
         return items;
     },
 
     beforeLoad: function (store) {
-        var hasExpired = this.down('checkbox[name=HasExpired]').getValue();
-        var params = store.proxy.extraParams;
+        var grid = this;
+        store.proxy.extraParams.HasExpired = grid.down('checkbox[name=HasExpired]').getValue();
+        store.proxy.extraParams.query = grid.down('textfield[name=query]').getValue();
 
-        params.HasExpired = hasExpired;
+        grid.down('button[action=edit]').setDisabled(true);
+        grid.down('button[action=delete]').setDisabled(true);
+
     }
 });

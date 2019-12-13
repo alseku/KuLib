@@ -24,18 +24,19 @@ Ext.application({
                     xtype: 'tabpanel',
                     tabPosition: 'left',
                     cls: 'verticaltab',
+                    minTabWidth: 150,
                     tabBar: {
-                        width: 200,
-                        minTabWidth: 200,
-                        maxTabWidth: 200,
-                        height: 20,
-                        orientation: 'vertical'
+                        width: 150,
+                        //minTabWidth: 200,
+                        //maxTabWidth: 200,
+                        //height: 20,
+                        //orientation: 'vertical'
                     },
                     plain: true,
                     items: [
                         {
                             xtype: 'tabpanel',
-                            title: 'Библиотека',
+                            title: 'Публикации',
                             items: [
                                 { xtype: 'publicationgrid' },
                                 { xtype: 'bookgrid' },
@@ -43,7 +44,8 @@ Ext.application({
                             ]
                         },
                         {
-                            xtype: 'usergrid'
+                            xtype: 'usergrid',
+                            title: 'Читатели',
                         }
                     ]
                 }

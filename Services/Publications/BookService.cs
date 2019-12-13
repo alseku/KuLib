@@ -24,7 +24,7 @@ namespace KuLib.Services.Publications
             base.FillFromModel(book, model);
             book.BookTitle = model.BookTitle;
             book.Author = model.Author;
-            book.InfoStr = $"{book.BookTitle}, {book.Author}";
+            book.InfoStr = $"{book.BookTitle} ({book.Year}), {book.Author}";
         }
 
         protected override void FillFromEntity(BookEditDto model, Book entity)

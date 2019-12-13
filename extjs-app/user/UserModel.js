@@ -15,10 +15,6 @@
             type: 'date'
         },
         {
-            name: 'IdentString',
-            type: 'string'
-        },
-        {
             name: 'RentedCount',
             type: 'int'
         },

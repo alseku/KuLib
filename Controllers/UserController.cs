@@ -15,16 +15,22 @@ namespace KuLib.Controllers
 {
     public class UserController: Controller
     {
-        public JsonNetResult List([Bind()]UserListArgs args)
+        public JsonNetResult List(UserListArgs args)
         {
             using (var dbc = new KuLibDbContext())
             {
                 var currentDate = DateTime.Now;
-                var filteredQuery = dbc.Users.Select(x => x);
+                //var filteredQuery = dbc.Users.Select(x => x);
+                IQueryable<User> filteredQuery = dbc.Users;
+
+                if (!string.IsNullOrEmpty(args.query))
+                    filteredQuery = filteredQuery.Where(x => x.FullName.Contains(args.query));
+
                 if (args.HasExpired)
                 {
                     filteredQuery = filteredQuery.Where(x => x.RentedPublications.Where(y => y.ReturnDate < currentDate).Count() > 0);
                 }
+
 
                 var data = filteredQuery
                     .OrderBy(x => x.FullName)
@@ -34,7 +40,6 @@ namespace KuLib.Controllers
                         Id = x.Id,
                         FullName = x.FullName,
                         BirthDate = x.BirthDate,
-                        IdentString = x.IdentString,
                         RentedCount = x.RentedPublications.Count(),
                         ExpiredCount = x.RentedPublications.Where(y => y.ReturnDate < currentDate).Count()
                     }).ToArray();
