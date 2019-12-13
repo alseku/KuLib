@@ -14,7 +14,7 @@
         columns.push({
             header: 'Название',
             dataIndex: 'BookTitle',
-            width: 100
+            width: 150
         },
         {
             header: 'Автор(ы)',

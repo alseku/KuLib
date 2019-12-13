@@ -10,6 +10,7 @@
     isNew: false,
 
     initComponent: function () {
+        this.modal = true;
         this.items = [
             {
                 xtype: 'form',

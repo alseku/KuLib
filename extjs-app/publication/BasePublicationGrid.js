@@ -35,7 +35,7 @@
         columns.push({
             header: 'Информационная строка',
             dataIndex: 'InfoStr',
-            width: 200
+            width: 300
         },
         {  
             header: 'Кол-во (шт)',

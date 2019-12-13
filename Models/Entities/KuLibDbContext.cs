@@ -14,7 +14,7 @@ namespace KuLib.Models.Entities
            //System.Diagnostics.Debug.WriteLine(Database.Connection.ConnectionString);
 
             // Будем видеть, какие команды EF отправляет к БД:
-            Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
+            //Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
 
             // Указываем EF, что если модель изменилась,
             // то нужно пересоздать базу данных с новой структурой
